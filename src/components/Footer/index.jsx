@@ -69,31 +69,15 @@ const Footer = () => {
       </div>
 
       <div className={styles.logosSection}>
-        <div className={styles.logosSection}>
-  <div className={styles.logosContainer}>
+        <div className={styles.logosContainer}>
+          <div className={styles.logoItem}>
+            <img src="LOGO HMAA1.png" alt="hmaa" />
+          </div>
 
-    <div className={styles.logoItem}>
-      <img src="LOGO HMAA1.png" alt="hmaa" />
-    </div>
-
-    {/*<div className={styles.logoItem}>
-      <img src="sec.png" alt="Governo do Estado do Ceará" />
-    </div>*/}
-
-   {/* <div className={styles.logoItem}>
-      <img src="sus.png" alt="SUS" />
-    </div>*/}
-
-    {/*<div className={styles.logoItem}>
-      <img src="especialistas.png" alt="Especialistas" />
-    </div>*/}
-
-    <div className={styles.logoItem}>
-      <img src="LOGO HMAA2.png" alt="Cartão popular" />
-    </div>
-
-  </div>
-</div>
+          <div className={styles.logoItem}>
+            <img src="LOGO HMAA2.png" alt="Casado Saúde" />
+          </div>
+        </div>
 
         <p className={styles.footerBottom}>
           &copy; {new Date().getFullYear()} Hospital e Maternidade Dr. Agenor Araújo — 
