@@ -1,0 +1,83 @@
+name: Deploy Cloudflare Pages
+
+# Publica https://hospitalagenoraraujo.com.br (projeto Pages "hmaa", conta Conddiz).
+#  - push na main deste repo  -> build + deploy
+#  - a cada 10 min (cron)     -> puxa as novidades do repo original (ssillva1413/Projeto-Hmaa,
+#                                do qual este é fork) e, se chegou commit novo, faz build + deploy
+#  - manual (Actions > Run workflow) -> sincroniza e publica sempre
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+  deployments: write
+
+concurrency:
+  group: pages-production
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.sync.outputs.changed }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Sincroniza com o upstream
+        id: sync
+        run: |
+          before=$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq .sha)
+          gh api -X POST "repos/$GITHUB_REPOSITORY/merge-upstream" -f branch=main --jq '.message'
+          after=$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq .sha)
+          if [ "$before" != "$after" ]; then echo "changed=true" >> "$GITHUB_OUTPUT"; else echo "changed=false" >> "$GITHUB_OUTPUT"; fi
+
+      # O GitHub desliga crons de repo público após 60 dias sem atividade; reabilitar zera a contagem.
+      - name: Mantém o cron ativo
+        if: github.event_name == 'schedule'
+        run: gh api -X PUT "repos/$GITHUB_REPOSITORY/actions/workflows/deploy.yml/enable" || true
+
+  deploy:
+    needs: sync
+    if: >-
+      always() && (
+        github.event_name == 'push' ||
+        (needs.sync.result == 'success' &&
+          (github.event_name == 'workflow_dispatch' || needs.sync.outputs.changed == 'true'))
+      )
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          ref: ${{ github.event_name == 'push' && github.sha || 'main' }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Commit hash
+        id: rev
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=hmaa --branch=main --commit-hash=${{ steps.rev.outputs.sha }}

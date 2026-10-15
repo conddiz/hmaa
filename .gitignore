@@ -40,3 +40,5 @@ dist-ssr
 
 # Arquivos enviados pelos usuários
 uploads/
+# deploy env injected from .global-vault (never commit)
+.env.deploy
