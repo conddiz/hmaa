@@ -79,9 +79,6 @@ function Duvidas() {
           Pacientes portadores de deficiência
           </p>
           <p>
-           Orientações importantes
-          </p>
-          <p>
            Para garantir a segurança alimentar e o controle sanitário, não é permitido 
            entrar com alimentos externos no hospital.
           </p>
@@ -173,9 +170,7 @@ function Duvidas() {
          fazer o cadastro na aba Trabalhe Conosco. 
         </>
       )
-    },
-    
-    
+    },  
 
   ];
 

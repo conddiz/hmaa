@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import styles from "./TrabalheConosco.module.css";
 
@@ -8,11 +7,9 @@ function TrabalheConosco() {
   const [arquivo, setArquivo] = useState("Nenhum arquivo selecionado");
   const [telefone, setTelefone] = useState("");
   const [enviado, setEnviado] = useState(false);
-  const [captchaToken, setCaptchaToken] = useState(null);
   const [loading, setLoading] = useState(false);
   const [progresso, setProgresso] = useState(0);
 
-  const recaptchaRef = useRef(null);
   const fileRef = useRef(null);
 
   const MAX_FILE_SIZE = 10 * 1024 * 1024;
@@ -66,16 +63,12 @@ function TrabalheConosco() {
 
     e.preventDefault();
 
-    if (!captchaToken) {
-      alert("Por favor, confirme que você não é um robô.");
-      return;
-    }
+    const form = e.currentTarget;
 
     setLoading(true);
     setProgresso(0);
 
-    const formData = new FormData(e.target);
-    formData.append("captchaToken", captchaToken);
+    const formData = new FormData(form);
 
     try {
 
@@ -89,11 +82,14 @@ function TrabalheConosco() {
 
           onUploadProgress: (progressEvent) => {
 
-            const percent = Math.round(
-              (progressEvent.loaded * 100) / progressEvent.total
-            );
+            if (progressEvent.total) {
 
-            setProgresso(percent);
+              const percent = Math.round(
+                (progressEvent.loaded * 100) / progressEvent.total
+              );
+
+              setProgresso(percent);
+            }
 
           }
         }
@@ -103,16 +99,18 @@ function TrabalheConosco() {
 
         setEnviado(true);
 
-        e.target.reset();
+        form.reset();
+
         setTelefone("");
         setArquivo("Nenhum arquivo selecionado");
 
-        recaptchaRef.current.reset();
-        setCaptchaToken(null);
+        if (fileRef.current) {
+          fileRef.current.value = "";
+        }
 
         setTimeout(() => {
           window.location.reload();
-        }, 9000);
+        }, 10000);
 
       }
 
@@ -121,9 +119,11 @@ function TrabalheConosco() {
       console.error(error);
       alert("Erro ao enviar formulário.");
 
-    }
+    } finally {
 
-    setLoading(false);
+      setLoading(false);
+
+    }
 
   }
 
@@ -139,26 +139,30 @@ function TrabalheConosco() {
       <div className={styles.wrapper}>
 
         <div className={styles.left}>
+
           <p>
             Se você acredita que cuidar de pessoas é mais do que uma
             profissão, é uma missão, o Hospital e Maternidade
             Dr. Agenor Araújo abre as portas para talentos
-            que desejam fazer a diferença todos os dias..
+            que desejam fazer a diferença todos os dias.
           </p>
+
           <p>
             Aqui você encontrará um ambiente de trabalho colaborativo,
-            oportunidades de desenvolvimento e a chance de contribuir 
+            oportunidades de desenvolvimento e a chance de contribuir
             com uma instituição que tem como propósito promover saúde,
-            cuidado e bem-estar à comunidade. 
+            cuidado e bem-estar à comunidade.
           </p>
+
           <p>
-           Cadastre seu currículo em nosso banco de talentos e venha
-           fazer parte da nossa equipe.
+            Cadastre seu currículo em nosso banco de talentos e venha
+            fazer parte da nossa equipe.
           </p>
+
           <p>
             Juntos, cuidamos de vidas.
           </p>
-          
+
         </div>
 
         <div className={styles.right}>
@@ -169,23 +173,41 @@ function TrabalheConosco() {
             </div>
           )}
 
-          <form className={styles.form} onSubmit={handleSubmit}>
+          <form
+            className={styles.form}
+            onSubmit={handleSubmit}
+          >
 
             <div className={styles.row}>
 
               <div className={styles.inputGroup}>
+
                 <label>NOME *</label>
-                <input name="nome" type="text" required />
+
+                <input
+                  name="nome"
+                  type="text"
+                  required
+                />
+
               </div>
 
               <div className={styles.inputGroup}>
+
                 <label>EMAIL *</label>
-                <input name="email" type="email" required />
+
+                <input
+                  name="email"
+                  type="email"
+                  required
+                />
+
               </div>
 
             </div>
 
             <div className={styles.inputGroup}>
+
               <label>TELEFONE</label>
 
               <input
@@ -199,8 +221,15 @@ function TrabalheConosco() {
             </div>
 
             <div className={styles.inputGroup}>
+
               <label>ÁREA DE INTERESSE *</label>
-              <textarea name="area" rows="4" required></textarea>
+
+              <textarea
+                name="area"
+                rows="4"
+                required
+              ></textarea>
+
             </div>
 
             <div className={styles.inputGroup}>
@@ -232,19 +261,13 @@ function TrabalheConosco() {
 
             </div>
 
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <ReCAPTCHA
-                sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-                onChange={(token) => setCaptchaToken(token)}
-                ref={recaptchaRef}
-              />
-            </div>
-
-            <button className={styles.botao} disabled={loading}>
+            <button
+              className={styles.botao}
+              disabled={loading}
+            >
               {loading ? "Enviando..." : "Enviar"}
             </button>
 
-            
           </form>
 
         </div>

@@ -72,6 +72,44 @@
   padding: 3rem;
 }
 
+.fontes {
+  margin-top: 35px;
+  padding-top: 20px;
+  border-top: 1px solid #d5d5d5;
+}
+
+.fontes h2 {
+  margin: 0 0 12px;
+  color: #188e5a;
+  font-size: 1.25rem;
+}
+
+.fontes p {
+  margin: 0 0 12px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.fontes ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.fontes li {
+  margin-bottom: 10px;
+  overflow-wrap: anywhere;
+}
+
+.fontes a {
+  color: #188e5a;
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+
+.fontes a:hover {
+  color: #be3638;
+}
+
 @media (max-width: 768px) {
 
   .tags {

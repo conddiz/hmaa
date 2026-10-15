@@ -25,12 +25,13 @@ function Especialidades() {
   }, []);
 
   const especialidades = [
-    {
-      img: "/obstetricia.jpeg",
-      alt: "Obstetrícia",
-      titulo: "Obstetrícia",
+    
+     {
+      img: "/cirurgia_geral.jpeg",
+      alt: "Cirurgia Geral",
+      titulo: "Cirurgia Geral",
       texto:
-        "No Hospital Maternidade Agenor Araújo (HMAA), a obstetrícia cirúrgica é conduzida com excelência, especialmente em partos cesáreos, oferecendo segurança para mãe e bebê com estrutura completa, equipe especializada e humanização em cada etapa do nascimento.",
+        "A equipe de cirurgia geral do HMAA atua em procedimentos abdominais, hérnias, vesícula, entre outros, com estrutura moderna, anestesia segura e acompanhamento especializado antes, durante e após a cirurgia.",
     },
     {
       img: "/ortopedia.jpeg",
@@ -40,26 +41,19 @@ function Especialidades() {
         "No Hospital Maternidade Agenor Araújo (HMAA), realizamos cirurgias ortopédicas e traumatológicas para correção de fraturas, lesões ligamentares e articulares, com foco na recuperação funcional e no retorno à qualidade de vida dos pacientes.",
     },
     {
+      img: "/urologia.jpeg",
+      alt: "Urologia",
+      titulo: "Urologia",
+      texto:
+        "A equipe de Urologia do HMAA atua no diagnóstico e tratamento de doenças do sistema urinário e do aparelho reprodutor masculino, oferecendo procedimentos especializados, acompanhamento seguro e cuidado integral em todas as etapas do tratamento.",
+    },
+    {
       img: "/ginecologia.jpeg",
       alt: "Ginecologia",
       titulo: "Ginecologia",
       texto:
         "O HMAA realiza cirurgias ginecológicas com foco na saúde e qualidade de vida da mulher, incluindo procedimentos como histerectomias, laparoscopias e correções de patologias uterinas, sempre com tecnologia e cuidado integral.",
-    },
-    {
-      img: "/cirurgia_geral.jpeg",
-      alt: "Cirurgia Geral",
-      titulo: "Cirurgia Geral",
-      texto:
-        "A equipe de cirurgia geral do HMAA atua em procedimentos abdominais, hérnias, vesícula, entre outros, com estrutura moderna, anestesia segura e acompanhamento especializado antes, durante e após a cirurgia.",
-    },
-    {
-      img: "/mastologia.jpeg",
-      alt: "Mastologia",
-      titulo: "Mastologia",
-      texto:
-        "O HMAA realiza cirurgias mastológicas voltadas ao tratamento de doenças das mamas, como nódulos e câncer de mama, com abordagem sensível, diagnósticos precisos e suporte em todas as fases do cuidado.",
-    },
+    }, 
     {
       img: "/proctologia.jpeg",
       alt: "Proctologia",
@@ -73,6 +67,13 @@ function Especialidades() {
       titulo: "Otorrinolaringologia",
       texto:
         "O serviço de otorrinolaringologia do HMAA realiza cirurgias como retirada das amígdalas, adenoides, correções do septo nasal e procedimentos auditivos, priorizando o alívio dos sintomas e o bem-estar dos pacientes.",
+    },
+     {
+      img: "/ofta.jpeg",
+      alt: "Oftalmologia",
+      titulo: "Oftalmologia",
+      texto:
+        "No HMAA, a Oftalmologia oferece atendimento especializado para cuidar da saúde dos olhos, desde a avaliação da visão até o acompanhamento e tratamento de diferentes condições oculares, promovendo mais segurança, autonomia e qualidade de vida aos pacientes.",
     },
   ];
 

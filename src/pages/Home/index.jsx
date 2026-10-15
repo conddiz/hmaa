@@ -1,11 +1,39 @@
+
 import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
 import React, { useState, useEffect, useRef } from "react";
 import noticias from "./Data/noticias";
 import ScrollReveal from "scrollreveal";
 
+function Referencias({ fontes }) {
+  if (!Array.isArray(fontes) || fontes.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className={styles.fontes}>
+      <strong>Fonte: </strong>
+
+      {fontes.map((fonte, index) => (
+        <React.Fragment key={`${fonte.url}-${index}`}>
+          {index > 0 && " · "}
+
+          <a
+            href={fonte.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {fonte.nome}
+          </a>
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
 const Home = () => {
   const [currentBanner, setCurrentBanner] = useState(0);
+
   const bannerRef = useRef(null);
   const promoCardRef = useRef(null);
 
@@ -20,6 +48,7 @@ const Home = () => {
     const interval = setInterval(() => {
       setCurrentBanner((prev) => (prev + 1) % banners.length);
     }, 6000);
+
     return () => clearInterval(interval);
   }, [banners.length]);
 
@@ -49,7 +78,10 @@ const Home = () => {
 
   return (
     <>
-      <section className={styles.sectionBanner} ref={bannerRef}>
+      <section
+        className={styles.sectionBanner}
+        ref={bannerRef}
+      >
         <div className={styles.carousel}>
           {banners.map((banner, index) => (
             <div
@@ -58,19 +90,27 @@ const Home = () => {
                 index === currentBanner ? styles.active : ""
               }`}
             >
-              <img src={banner} alt={`Banner ${index + 1}`} />
+              <img
+                src={banner}
+                alt={`Banner ${index + 1}`}
+              />
             </div>
           ))}
 
           <button
             className={`${styles.arrow} ${styles.left}`}
             onClick={prevSlide}
+            type="button"
+            aria-label="Banner anterior"
           >
             &#10094;
           </button>
+
           <button
             className={`${styles.arrow} ${styles.right}`}
             onClick={nextSlide}
+            type="button"
+            aria-label="Próximo banner"
           >
             &#10095;
           </button>
@@ -83,7 +123,7 @@ const Home = () => {
                   index === currentBanner ? styles.activeDot : ""
                 }`}
                 onClick={() => setCurrentBanner(index)}
-              ></span>
+              />
             ))}
           </div>
         </div>
@@ -97,6 +137,7 @@ const Home = () => {
               <br />
               vem de casa!
             </h2>
+
             <h3>
               Um ambiente seguro e atencioso
               <br />
@@ -106,7 +147,11 @@ const Home = () => {
             </h3>
           </div>
 
-          <Link to="/cartao" className={styles.promoCard} ref={promoCardRef}>
+          <Link
+            to="/cartao"
+            className={styles.promoCard}
+            ref={promoCardRef}
+          >
             <div className={styles.promoContent}>
               <h3>
                 Saiba como <br />
@@ -119,7 +164,10 @@ const Home = () => {
               </h3>
 
               <div className={styles.promoImage}>
-                <img src="/saulo.jpeg" alt="Cartão Popular" />
+                <img
+                  src="/saulo.jpeg"
+                  alt="Cartão Popular"
+                />
               </div>
             </div>
           </Link>
@@ -136,17 +184,39 @@ const Home = () => {
         <div className={styles.newsContainer}>
           <div className={styles.newsGrid}>
             {ultimasNoticias.map((noticia) => (
-              <article key={noticia.id} className={styles.newsCard}>
+              <article
+                key={noticia.id}
+                className={styles.newsCard}
+              >
                 <div className={styles.newsImage}>
-                  <img src={noticia.imagem} alt={noticia.titulo} />
+                  <img
+                    src={noticia.imagem}
+                    alt={noticia.titulo}
+                  />
                 </div>
+
                 <div className={styles.newsContent}>
                   <h3>{noticia.titulo}</h3>
-                  <div className={styles.newsDate}>{noticia.data}</div>
+
+                  <div className={styles.newsDate}>
+                    {noticia.data}
+                  </div>
+
                   <p>{noticia.resumo}</p>
-                  <Link to={noticia.link} className={styles.newsLink}>
-                    <span className={styles.newsLinkText}>Leia mais</span>
-                    <span className={styles.newsLinkArrow}> →</span>
+
+                  <Referencias fontes={noticia.fontes} />
+
+                  <Link
+                    to={noticia.link}
+                    className={styles.newsLink}
+                  >
+                    <span className={styles.newsLinkText}>
+                      Leia mais
+                    </span>
+
+                    <span className={styles.newsLinkArrow}>
+                      {" "}→
+                    </span>
                   </Link>
                 </div>
               </article>
@@ -163,8 +233,13 @@ const Home = () => {
         </div>
 
         <div className={styles.address}>
-          <p className={styles.street}>Rua Vicente Bezerra da Costa, 338</p>
-          <p className={styles.city}>São Sebastião, Iguatu - CE</p>
+          <p className={styles.street}>
+            Rua Vicente Bezerra da Costa, 338
+          </p>
+
+          <p className={styles.city}>
+            São Sebastião, Iguatu - CE
+          </p>
         </div>
 
         <div className={styles.locationContent}>
@@ -173,16 +248,18 @@ const Home = () => {
               src="novo.jpeg"
               alt="Hospital e Maternidade Dr. Agenor Araújo"
             />
+
             <div className={styles.mapOverlay}>
               <iframe
                 src="https://www.google.com.br/maps/embed?pb=!1m18!1m12!1m3!1d3171.170389060178!2d-39.29601592375827!3d-6.358431193568011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a31e44587d9ccb%3A0x10b516e6cf65d055!2sHospital%20e%20Maternidade%20Dr.%20Agenor%20Ara%C3%BAjo!5e0!3m2!1spt-BR!2sbr!4v1709583026083!5m2!1spt-BR!2sbr"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
-                allowFullScreen=""
+                allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+                title="Localização do Hospital e Maternidade Agenor Araújo"
+              />
             </div>
           </div>
         </div>

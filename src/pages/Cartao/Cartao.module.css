@@ -13,6 +13,7 @@
   align-items: flex-start;
   gap: 3rem;
   flex-wrap: wrap;
+  
 }
 
 .clinicaTexto {
@@ -51,6 +52,7 @@
 .clinicaInfo p {
   margin: 6px 0;
   font-size: 0.95rem;
+
 }
 
 .tituloGaleria {
@@ -160,6 +162,10 @@
   line-height: 1.6;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
+.textoCard {
+  color: #fff;
+}
+
 
 .cardVermelho {
   background: #d62828;
@@ -218,11 +224,18 @@
   font-size: 1.1rem;
   line-height: 1.5;
 }
+.info{
+  color: white;
+}
+.siga{
+  color: white;
+}
 
 .whatsapp {
   font-size: 1.35rem;
   font-weight: bold;
   margin-top: 4px;
+  color: white;
 }
 
 .cardQrCode img {

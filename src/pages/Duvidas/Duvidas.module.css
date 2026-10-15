@@ -1,6 +1,6 @@
 .container {
   min-height: 100vh;
-  padding: 120px 60px 60px 60px;
+    padding: 52px 60px 80px;
 }
 
 .titleRow {
@@ -106,6 +106,7 @@
 
   .answer {
     font-size: 15px;
+    text-align: justify;
   }
 }
 

@@ -39,10 +39,18 @@
 
 .menuIcon {
   display: none;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  box-shadow: none;
+  appearance: none;
+
   font-size: 2rem;
   color: #188E5A;
   cursor: pointer;
   z-index: 1201;
+  line-height: 1;
 }
 
 .mobileDrawer {
@@ -179,6 +187,10 @@
 
 .showMobile {
   max-height: 400px;
+.transparenciaDropdownContent {
+  left: auto;
+  right: 0;
+}
 }
 
 @media (max-width: 768px) {

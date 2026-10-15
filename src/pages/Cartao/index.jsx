@@ -142,10 +142,10 @@ function Cartao() {
           </div>
 
           <div className={styles.cardContatos}>
-            <p>Maiores informações:</p>
+            <p className={styles.info}>Maiores informações:</p>
             <p className={styles.whatsapp}>(88) 9 9298.7818</p>
 
-            <p>Siga nosso Instagram:</p>
+            <p className={styles.siga}>Siga nosso Instagram:</p>
             <a
               href="https://www.instagram.com/clinicacasadesaude/"
               target="_blank"

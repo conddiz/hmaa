@@ -193,6 +193,29 @@
   text-decoration: underline;
 }
 
+.fontes {
+  margin: 12px 0;
+  color: #555;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.fontes strong {
+  font-weight: 600;
+}
+
+.fontes a {
+  color: #188e5a;
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+  transition: color 0.2s ease;
+}
+
+.fontes a:hover {
+  color: #be3638;
+}
+
 @media (max-width: 1024px) {
   .gridCards {
     grid-template-columns: repeat(3, 1fr);

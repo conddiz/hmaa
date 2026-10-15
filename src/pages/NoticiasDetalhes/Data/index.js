@@ -1,8 +1,8 @@
+
 import { Subtitles } from "lucide-react";
 
 const noticias = [
-
-   {
+  {
     id: 1,
     imagem: "/estado.jpg",
     titulo: "teste 1",
@@ -11,13 +11,14 @@ const noticias = [
     tags: ["Equipamentos", "Hospitalares", "Inovação"],
     autores: ["Equipe SC Medical"],
   },
-   {
+
+  {
     id: 2,
     titulo:
       "UTI Pediátrica do Hospital e Maternidade Agenor Araújo é inaugurada com a participação da secretária estadual da Saúde Tânia Mara",
     data: "18 DE OUTUBRO DE 2025",
     conteudo: [
-       {
+      {
         tipo: "imagem",
         valor: "/uti1.jpeg",
       },
@@ -25,7 +26,7 @@ const noticias = [
         tipo: "texto",
         valor: `O evento aconteceu no domingo, 12, com a presença da secretária da Saúde do Estado do Ceará, Tânia Mara. O novo equipamento conta
          com dez leitos, conforme apresentado. O espaço moderno passa a oferecer maior segurança para a saúde na região.`,
-      },  
+      },
       {
         tipo: "texto",
         valor: `A secretária da Saúde do Ceará, Tânia Mara, classificou como um momento histórico a instalação da UTI Pediátrica em Iguatu, como 
@@ -36,7 +37,6 @@ const noticias = [
            pelo Governo Federal, que vai passar a diminuir o custeio do Estado que cai para R$ 300 mil e o restante do Governo Federal. Mas é um 
            dinheiro que vai ficar para sempre, para manter esse unidade, essa estrutura que é fundamental para nossa população”, pontuou Tânia Mara.`,
       },
-      
       {
         tipo: "texto",
         valor: `A Casa de Saúde foi fundada pelo médico Agenor Araújo. Seus familiares passam o legado a cada geração. O deputado Agenor Neto falou da importância
@@ -45,7 +45,6 @@ const noticias = [
            ter vivenciado esse momento, no dia das Crianças, vai ficar marcado e na história essa UTI Pediátrica do Hospital Agenor Araújo”, afirmou o parlamentar,
             que ao lado dos filhos integra a direção da unidade, Victor Oliveira, estudante de Medicina, e do engenheiro civil Ilo Neto.`,
       },
-      
       {
         tipo: "texto",
         valor: `Logo após a inauguração, conforme anunciado, na segunda-feira, 13, a UTI Pediátrica passou a funcionar. Andrezza Saraiva, diretora do hospital, destacou
@@ -61,16 +60,14 @@ const noticias = [
         valor: `A diretoria da Casa de Saúde pontuou também que através do apoio do Governo do Estado, dos deputados estadual Agenor Neto, e federal Eunício Oliveira
         , foi primordial para a instalação da unidade.`,
       },
-      
       {
         tipo: "texto",
         valor: `A solenidade contou também com as presenças do deputado estadual Felipe Aguiar, do federal Eunício Oliveira, autoridades estaduais, do município e convidados.`,
       },
-       {
+      {
         tipo: "imagem",
         valor: "/uti2.jpeg",
-      },   
-      
+      },
     ],
     tags: [
       "",
@@ -83,7 +80,14 @@ const noticias = [
       "",
       "",
     ],
+    fontes: [
+      {
+        nome: "Jornal A Praça",
+        url: "https://www.jornalapraca.com.br/uti-pediatrica-do-hospital-e-maternidade-agenor-araujo-e-inaugurada-com-a-participacao-da-secretaria-estadual-da-saude-tania-mara/",
+      },
+    ],
   },
+
   {
     id: 3,
     imagem: "/image.jpg",
@@ -109,7 +113,7 @@ const noticias = [
       "Governo do Ceará reforça compromisso com realização de cirurgias eletivas e tratamento do câncer na Região Centro-Sul",
     data: "28 DE JULHO DE 2023 - 21:16",
     conteudo: [
-       {
+      {
         tipo: "imagem",
         valor: "/estado.jpg",
       },
@@ -120,7 +124,7 @@ const noticias = [
         das Filas de Cirurgias Eletivas, Exames Complementares e Consultas Especializadas. Até o momento, 
         110 procedimentos foram realizados na unidade. Na tarde desta terça-feira (25), o governador Elmano de 
         Freitas visitou o Hospital, acompanhado de autoridades, e reforçou a parceria para ampliar acesso ao tratamento do câncer.`,
-      },  
+      },
       {
         tipo: "imagem",
         valor: "/proadi.jpg",
@@ -185,13 +189,12 @@ const noticias = [
         raumatologia e anestésica.`,
       },
       {
-        subtitulo: "Mais investimento em saúde", 
-        tipo:"texto",
-        valor:`O Ceará também é contemplado pelo Programa Nacional de Redução de Filas, do Governo Federal, contando com recurso de R$25,9 milhões
+        subtitulo: "Mais investimento em saúde",
+        tipo: "texto",
+        valor: `O Ceará também é contemplado pelo Programa Nacional de Redução de Filas, do Governo Federal, contando com recurso de R$25,9 milhões
          e uma contrapartida estadual no valor de R$7,98 milhões, totalizando R$ 33,88 milhões para 15.900 cirurgias. Com os investimentos das iniciativas 
-         federal e estadual, são quase R$ 170 milhões para realizar cerca de 45 mil procedimentos.`
-      }
-      
+         federal e estadual, são quase R$ 170 milhões para realizar cerca de 45 mil procedimentos.`,
+      },
     ],
     tags: [
       "Centro-Sul",
@@ -203,6 +206,12 @@ const noticias = [
     autores: [
       "Larissa Falcão - Ascom Casa Civil - Texto",
       "Thiago Gaspar - Casa Civil - Foto",
+    ],
+    fontes: [
+      {
+        nome: "Governo do Estado do Ceará — Secretaria da Saúde",
+        url: "https://www.ce.gov.br/saude/2023/07/26/governo-ceara-compromisso-cirurgias-eletivas-tratamento-do-cancer/",
+      },
     ],
   },
 ];
