@@ -42,3 +42,6 @@ dist-ssr
 uploads/
 # deploy env injected from .global-vault (never commit)
 .env.deploy
+
+# wrangler (workers/fork-sync)
+.wrangler/

@@ -1,0 +1,14 @@
+name = "hmaa-fork-sync"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+preview_urls = false
+
+[triggers]
+crons = ["*/5 * * * *"]
+
+[observability]
+enabled = true
+
+# Secret GITHUB_TOKEN: token fine-grained so com Contents (read/write) em conddiz/hmaa.
+# Publique/rotacione com scripts\Install-ForkSync.ps1 (guarda no cofre conddiz/hmaa-sync).

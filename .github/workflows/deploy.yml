@@ -1,16 +1,17 @@
 name: Deploy Cloudflare Pages
 
 # Publica https://hospitalagenoraraujo.com.br (projeto Pages "hmaa", conta Conddiz).
-#  - push na main deste repo  -> build + deploy
-#  - a cada 10 min (cron)     -> puxa as novidades do repo original (ssillva1413/Projeto-Hmaa,
-#                                do qual este é fork) e, se chegou commit novo, faz build + deploy
+#  - push na main deste repo  -> build + deploy. O Worker workers/fork-sync sincroniza o fork
+#                                com ssillva1413/Projeto-Hmaa a cada 5 min e gera esse push.
+#  - cron (reserva, se o Worker parar) -> sincroniza e publica se chegou commit novo;
+#                                o GitHub atrasa crons frequentes em horas, por isso é só reserva
 #  - manual (Actions > Run workflow) -> sincroniza e publica sempre
 
 on:
   push:
     branches: [main]
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:
