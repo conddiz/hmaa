@@ -170,6 +170,12 @@
   display: flex;
   flex-direction: column;
 }
+.mobileDropdown > span {
+  color: #188E5A;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
 
 .dropdownContentMobile {
   max-height: 0;
@@ -222,4 +228,4 @@
     padding: 0 20px;
     height: 75px;
   }
-}
+} 
