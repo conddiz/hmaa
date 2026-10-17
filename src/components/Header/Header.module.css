@@ -193,10 +193,11 @@
 
 .showMobile {
   max-height: 400px;
+}
+
 .transparenciaDropdownContent {
   left: auto;
   right: 0;
-}
 }
 
 @media (max-width: 768px) {
