@@ -30,7 +30,7 @@
   color: #188E5A;
   text-decoration: none;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .desktopMenu a:hover {
@@ -95,7 +95,7 @@
   color: #188E5A;
   text-decoration: none;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .drawerMenu a:hover {
@@ -118,7 +118,7 @@
 
 .dropdownTitle {
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 500;
   transition: color 0.3s;
 }
 
@@ -173,7 +173,7 @@
 .mobileDropdown > span {
   color: #188E5A;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
 }
 
